@@ -1,6 +1,10 @@
+import Routes from "./routes/index"
+
 const App = () => {
   return (
-    <div>Epic grocery sdsd</div>
+    <div>
+      <Routes/>
+    </div>
   )
 }
 

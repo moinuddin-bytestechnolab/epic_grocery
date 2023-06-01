@@ -9,7 +9,7 @@ const AllCategories = () => {
   return (
     <>
         {/* All Categories Toggle Dropdown List */}
-        <div className="hidden sm:block ps-3">
+        <div className="hidden sm:block ps-3 z-50">
             <Menu as="div" className="relative text-left">
                     <Menu.Button className="flex items-center  text-white gap-x-2 text-md font-semibold">All Categories  
                         <ChevronDownIcon className="-mr-1 h-5 w-5 text-white " aria-hidden="true" />

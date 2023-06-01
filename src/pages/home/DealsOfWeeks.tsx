@@ -5,16 +5,16 @@ const DealsOfWeeks = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const categories = [
-      {offer: false ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Bhindi.svg' ,productName: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Bhindi.svg' ,productName: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Bhindi.svg' ,productName: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Bhindi.svg' ,productName: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'}
+      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'}
   ];
 
   const handlePreviousClick = () => {

@@ -5,7 +5,7 @@ import { AiFillHeart } from 'react-icons/ai'
 interface ICategory {
     offer: any;
     image: string;
-    productName: string;
+    name: string;
     description: string;
     price: string;
   }
@@ -18,6 +18,8 @@ interface ICategory {
 
 const Card = (props:ICardProps) => {
     const { categories, currentIndex, handleClick} = props
+
+    
 
     const [likedCategories, setLikedCategories] = useState<any>([]);
 
@@ -33,7 +35,9 @@ const Card = (props:ICardProps) => {
   return (
     <div>
         <div className="container grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
-            {categories.map((item,index)=>(
+            {
+            categories[0] ?
+            categories.map((item,index)=>(
                 <div
                     key={`Card_${index}`}
                     className={`w-[239px] h-[346px] border-2 rounded-lg relative p-4 ${currentIndex === index ? 'border-blue-500': ''}`}
@@ -47,12 +51,12 @@ const Card = (props:ICardProps) => {
                     <div className='flex justify-around'>
                         <img
                             src={item.image}
-                            alt={item.productName}
+                            alt={item.name}
                             className="w-[135.43px] h-[170px]"
                         />
                     </div>
                     <div className='flex justify-between my-2'>
-                        <span className="text-sm font-medium text-gray-400 w-44">{item.productName}</span>
+                        <span className="text-sm font-medium text-gray-400 w-44">{item.name}</span>
                         <div><button className='text-2xl cursor-pointer' onClick={() => handleLike(index)}>
                             {likedCategories.includes(index) ? (<AiFillHeart/>) : (<AiOutlineHeart/>)}
                             </button>
@@ -64,7 +68,12 @@ const Card = (props:ICardProps) => {
                     </div>
                     <div className='mt-4'><button className='border h-10 w-full border-black hover:bg-[#5A9C17] hover:text-slate-100 hover:border-none text-sm font-bold'>Add to cart</button></div>
                 </div>
-            ))}
+            ))
+            :
+            <div className='flex justify-center'>
+                <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTE3ZDVmYTA2MmQ1M2ZmOWZkMDU1MGFhODA4ZDBmOGNmYWU3M2QwMiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/V3bkSmyNMaXY5OMYzL/giphy.gif" alt="" srcSet="" />
+            </div>
+        }
       </div>
     </div>
   );

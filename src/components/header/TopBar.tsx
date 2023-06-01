@@ -1,7 +1,7 @@
-import SearchBar from './SearchBar';
 import MainLogo from './MainLogo';
-import LoginButton from './LoginButton';
 import Carts from './Carts';
+import Profile from './Profile';
+import SearchBar from './SearchBar';
 
 const TopBar = () => {
   return (
@@ -9,7 +9,7 @@ const TopBar = () => {
       <div className="container"> 
         <div className='grid lg:grid-cols-4 md:grid-cols-3 py-5'>
           {/* Main Logo With Name */}
-          <MainLogo/>
+          <a href="/"><MainLogo/></a>
 
           {/* Free Delivery Logo With Text */}
           <div className='hidden lg:block py-1'>
@@ -20,12 +20,17 @@ const TopBar = () => {
           </div>
 
           {/* Search Bar */}
-          <SearchBar/>
+          <div>
+            <SearchBar/>
+          </div>
         
           {/* Login And MyCarts */}
           <div className='hidden space-x-2 md:flex justify-end sm:ml-6 sm:static sm:inset-auto sm:pr-0 me-3'>
               <div><Carts/></div>
-              <div className='flex items-center'><LoginButton/></div>
+              <div className='flex items-center'>
+                {/* <LoginButton/> */}
+                <Profile/>
+                </div>
           </div>
         </div>
       </div>
