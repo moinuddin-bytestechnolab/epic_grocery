@@ -10,6 +10,9 @@ const TopSelling = () => {
       {offer: true && '20% off' ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
       {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
       {offer: true && '30% off' ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
+      {offer: true && '20% off' ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
+      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
+      {offer: true && '30% off' ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
   ];
 
   const handlePreviousClick = () => {
