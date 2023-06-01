@@ -13,6 +13,8 @@ import Private from "../routes/private/index"
 import Public from "../routes/public/index"
 import Search from '../pages/search'
 import Error from '../pages/error'
+import ProductDetails from '../pages/productDetails'
+
 const index = () => { 
     return (
       <div>
@@ -24,6 +26,7 @@ const index = () => {
             <Route path="/offers" element={<Offers/>}/>
             <Route path="/shop" element={<Shop/>}/>
             <Route path="/store-location" element={<StoreLocation/>}/>
+            <Route path="/product-details" element={<ProductDetails/>}/>
           </Route>
           <Route path="/" element={<Public/>}>
             <Route path="/login" element={<Login/>}/>
