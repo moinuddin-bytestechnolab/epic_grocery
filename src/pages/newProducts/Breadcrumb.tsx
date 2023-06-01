@@ -4,7 +4,7 @@ const Breadcrumb = () => {
   return (
     <>
       <div className='container'>
-        <nav className="flex my-10" aria-label="Breadcrumb">
+        <nav className="flex my-5" aria-label="Breadcrumb">
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
             <li className="inline-flex items-center">
                 <NavLink to="/" className="inline-flex items-center text-lg font-medium text-gray-500 hover:text-gray-900">

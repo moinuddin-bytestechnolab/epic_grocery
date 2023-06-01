@@ -1,6 +1,12 @@
+import Breadcrumb from "./Breadcrumb"
+import NewProductPage from "./NewProductPage"
+
 const index = () => {
   return (
-    <div className="text-7xl font-semibold text-center my-28">New Products</div>
+    <div>
+        <Breadcrumb/>
+        <NewProductPage/>
+    </div>
   )
 }
 

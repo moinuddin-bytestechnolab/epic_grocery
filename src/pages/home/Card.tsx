@@ -34,7 +34,7 @@ const Card = (props:ICardProps) => {
 
   return (
     <div>
-        <div className="container grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
+        <div className="container grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
             {
             categories[0] ?
             categories.map((item,index)=>(
