@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios"
 
 
-const API_URL = "http://192.168.1.13:3000/"
+const API_URL = "http://192.168.10.170:3000/"
 
 
 // register
