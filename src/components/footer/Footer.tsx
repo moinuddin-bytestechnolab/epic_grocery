@@ -4,14 +4,14 @@ import { BsFacebook, BsInstagram, BsLinkedin, BsYoutube } from 'react-icons/bs'
 const Footer = () => {
   return (
     <>
-      <footer className="bg-white dark:bg-gray-900">
+      <footer className="bg-gray-900">
           <div className="container py-6">
               <div className="flex justify-center">
                 <div className="grid lg:grid-cols-4 grid-cols-2 2xl:gap-10 gap-y-10">
                   <div className="flex xl:justify-start justify-center">
                     <div>
-                        <h2 className="mb-6 sm:text-sm text-xs font-semibold text-gray-900 uppercase dark:text-white">Information</h2>
-                        <ul className="text-gray-600 dark:text-gray-400 font-medium sm:text-sm text-xs">
+                        <h2 className="mb-6 sm:text-sm text-xs font-semibold uppercase text-white">Information</h2>
+                        <ul className="text-white font-medium sm:text-sm text-xs">
                             <li className="my-2">
                                 <Link to="#" className="hover:underline">Store Location</Link>
                             </li>
@@ -32,8 +32,8 @@ const Footer = () => {
                   </div>
                   <div className="flex xl:justify-start lg:justify-center justify-start">
                     <div>
-                      <h2 className="mb-6 sm:text-sm text-xs font-semibold text-gray-900 uppercase dark:text-white">About  us</h2>
-                      <ul className="text-gray-600 dark:text-gray-400 font-medium sm:text-sm text-xs">
+                      <h2 className="mb-6 sm:text-sm text-xs font-semibold uppercase text-white">About  us</h2>
+                      <ul className="text-white font-medium sm:text-sm text-xs">
                           <li className="my-2">
                               <Link to="" className="hover:underline ">Our Story</Link>
                           </li>
@@ -54,8 +54,8 @@ const Footer = () => {
                   </div>
                   <div className="flex xl:justify-start justify-center">
                     <div>
-                      <h2 className="mb-6 sm:text-sm text-xs font-semibold text-gray-900 uppercase dark:text-white">Shop</h2>
-                      <ul className="text-gray-600 dark:text-gray-400 font-medium sm:text-sm text-xs">
+                      <h2 className="mb-6 sm:text-sm text-xs font-semibold uppercase text-white">Shop</h2>
+                      <ul className="text-white font-medium sm:text-sm text-xs">
                           <li className="my-2">
                               <Link to="#" className="hover:underline">All Products</Link>
                           </li>
@@ -76,8 +76,8 @@ const Footer = () => {
                   </div>
                   <div className="flex justify-center">
                     <div>
-                      <h2 className="mb-6 sm:text-sm text-xs font-semibold text-gray-900 uppercase dark:text-white">Newslatter</h2>
-                      <p className="text-gray-600 dark:text-gray-400 sm:text-sm text-xs">Register now to get updates on promotions & coupons</p>
+                      <h2 className="mb-6 sm:text-sm text-xs font-semibold uppercase text-white">Newslatter</h2>
+                      <p className="text-white sm:text-sm text-xs">Register now to get updates on promotions & coupons</p>
                       <div className='my-2'>
                         <label className="block absolute">
                           <button className="absolute inset-y-0 right-0 flex items-center px-2 sm:text-sm text-xs bg-black text-white rounded-full">Subscribe</button>
