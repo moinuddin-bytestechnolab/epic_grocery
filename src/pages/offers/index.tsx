@@ -1,6 +1,12 @@
+import Breadcrumb from "./Breadcrumb"
+import OffersPage from "./OffersPage"
+
 const index = () => {
     return (
-      <div>index</div>
+      <div>
+        <Breadcrumb/>
+        <OffersPage/>
+      </div>
     )
   }
   
