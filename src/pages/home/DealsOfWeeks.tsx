@@ -1,21 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from './Card';
+import { allProducts } from '../../services/Auth.service';
 
 const DealsOfWeeks = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const categories = [
-      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Bhindi.svg' ,name: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-      {offer: false ,image:'/public/images/Maggi.svg' ,name: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'}
-  ];
+  const [categories, setCategories] = useState([])
+
+  const getAllProducts = async () => {
+    await allProducts()
+    .then((res)=>{
+      setCategories(res?.data.data)
+    })
+    .catch((error)=>{
+      console.log("Get All Products =>",error);
+      
+    })
+  }
+
+  useEffect(() => {
+    getAllProducts()
+  }, [])
+  
 
   const handlePreviousClick = () => {
         setCurrentIndex((prevIndex: number) =>  (prevIndex > 0 ? prevIndex - 1 : 0))
@@ -24,14 +30,6 @@ const DealsOfWeeks = () => {
     const handleNextClick = () => {
         setCurrentIndex((prevIndex: number)=> (prevIndex < categories.length - 1  ? prevIndex + 1 : categories.length - 1))
     }
-
-    const handleClick = (index: number) => {
-      if(index < currentIndex){
-        setCurrentIndex(index);
-      }else{
-        handleNextClick()
-      }
-    };
 
   return (
     <div>
@@ -58,7 +56,7 @@ const DealsOfWeeks = () => {
 
         </div>
           <div className='flex justify-center'>
-            <Card categories={categories} currentIndex={currentIndex} handleClick={handleClick}/>
+            <Card categories={categories} currentIndex={currentIndex}/>
           </div>
       </div>
     </div>

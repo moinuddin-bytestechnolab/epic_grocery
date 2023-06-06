@@ -16,9 +16,8 @@ const SeassonOfferCard = (props:ISeasonOffer) => {
             <div className='flex justify-center my-20'>
                 <div className='grid lg:grid-cols-2 grid-cols-1 gap-5'>
                     {categories.map((item) => (
-                        <div className='relative flex'>
-                            <img src={`${item.image}`} className="" alt={`Summer Offer`}/>
-                            <div className="absolute sm:max-w-sm flex flex-col z-30 md:-translate-y-1/2 -translate-y-1/3 md:translate-x-1/4 translate-x-3  bottom-0 overflow-hidden">
+                        <div className='flex'>
+                            <div className=" flex items-center ps-5 z-30  bottom-0 overflow-hidden w-[630px] h-[280px]" style={{ backgroundImage: `url(${item.image})`}}>
                                 <div>
                                     <div><p className="text-green-500 font-semibold text-base">{item.offer}</p></div>
                                     <div className="my-1"><p className="sm:text-xl text-lg font-semibold py-1">{item.title}</p></div>

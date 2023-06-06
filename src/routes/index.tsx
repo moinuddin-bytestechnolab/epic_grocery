@@ -1,42 +1,49 @@
+import React, { Suspense } from 'react';
 import { Routes, Route } from "react-router-dom"
-import ForgotPassword from "../components/header/Authentication/ForgotPassword"
-import Login from "../components/header/Authentication/Login"
-import Register from "../components/header/Authentication/Register"
-import ResetPassword from "../components/header/Authentication/ResetPassword"
-import Home from "../pages/home"
-import NewProducts from "../pages/newProducts"
-import Offers from "../pages/offers"
-import Shop from "../pages/shop"
-import StoreLocation from "../pages/storeLocation"
-import OtpVerification from "../components/header/Authentication/OtpVerification"
-import Private from "../routes/private/index"
-import Public from "../routes/public/index"
-import Search from '../pages/search'
-import Error from '../pages/error'
-import ProductDetails from '../pages/productDetails'
+const ChangePassword = React.lazy(()=> import('../components/header/Authentication/ChangePassword'))
+const ForgotPassword = React.lazy(()=> import('../components/header/Authentication/ForgotPassword'))
+const Login = React.lazy(() => import('../components/header/Authentication/Login'))
+const Register = React.lazy(() => import('../components/header/Authentication/Register'))
+const ResetPassword = React.lazy(() => import("../components/header/Authentication/ResetPassword"))
+const Home = React.lazy(() => import("../pages/home"))
+const NewProducts = React.lazy(() => import("../pages/newProducts"))
+const Offers = React.lazy(() => import("../pages/offers"))
+const Shop = React.lazy(() => import("../pages/shop"))
+const StoreLocation = React.lazy(() => import("../pages/storeLocation"))
+const OtpVerification = React.lazy(() => import("../components/header/Authentication/OtpVerification"))
+const Private = React.lazy(() => import("../routes/private/index"))
+const Public = React.lazy(() => import("../routes/public/index"))
+const Search = React.lazy(() => import("../pages/search"))
+const Error = React.lazy(() => import("../pages/error"))
+const ProductDetails = React.lazy(() => import("../pages/productDetails"))
+const MyCarts = React.lazy(() => import("../pages/myCart/MyCarts"))
 
 const index = () => { 
     return (
       <div>
-        <Routes>
-          <Route path="/" element={<Private/>}>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/search/:product?" element={<Search/>}/>
-            <Route path="/new-products" element={<NewProducts/>}/>
-            <Route path="/offers" element={<Offers/>}/>
-            <Route path="/shop" element={<Shop/>}/>
-            <Route path="/store-location" element={<StoreLocation/>}/>
-            <Route path="/product-details" element={<ProductDetails/>}/>
-          </Route>
-          <Route path="/" element={<Public/>}>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/create" element={<Register/>}/>
-            <Route path="/forgot-password" element={<ForgotPassword/>}/>
-            <Route path="/email-verification" element={<OtpVerification/>}/>
-            <Route path="/reset-password" element={<ResetPassword/>}/>
-          </Route>
-          <Route path='*' element={<Error/>} />
-        </Routes>
+        {/* <Suspense fallback={<Loader/>}> */}
+          <Routes>
+            <Route path="/" element={<Private/>}>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/search/:product?" element={<Search/>}/>
+              <Route path="/new-products" element={<NewProducts/>}/>
+              <Route path="/offers" element={<Offers/>}/>
+              <Route path="/shop" element={<Shop/>}/>
+              <Route path="/store-location" element={<StoreLocation/>}/>
+              <Route path="/product-details" element={<ProductDetails/>}/>
+              <Route path="/my-carts" element={<MyCarts/>}/>
+              <Route path="/change-password" element={<ChangePassword/>}/>
+            </Route>
+            <Route path="/" element={<Public/>}>
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/create" element={<Register/>}/>
+              <Route path="/forgot-password" element={<ForgotPassword/>}/>
+              <Route path="/email-verification" element={<OtpVerification/>}/>
+              <Route path="/reset-password" element={<ResetPassword/>}/>
+            </Route>
+            <Route path='*' element={<Error/>} />
+          </Routes>
+        {/* </Suspense> */}
       </div>
     )
   }

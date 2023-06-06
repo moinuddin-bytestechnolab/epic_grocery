@@ -6,24 +6,30 @@ import { AiFillStar } from 'react-icons/ai'
 const ProductDetails = () => {
   return (
     <>
-        <div className="product-details container">
-        <div className="grid grid-cols-2 gap-36">
+        <div className="product-details container px-2">
+            <div className="grid sm:grid-cols-2 lg:gap-36 md:gap-20 sm:gap-10 gap-2">
                 <div className="left-content">
-                    <div className="flex">
-                        <div className="">
-                            <img src="images/Apple1.svg" alt="product" className="w-20 h-20 border-2 border-gray-100 p-2 mb-6"/>
-                            <img src="images/Apple2.svg" alt="product" className="w-20 h-20 border-2 border-gray-100 p-2 mb-6"/>
-                            <img src="images/Apple1.svg" alt="product" className="w-20 h-20 border-2 border-gray-100 p-2 mb-6"/>
-                            <img src="images/Apple2.svg" alt="product" className="w-20 h-20 border-2 border-gray-100 p-2 mb-6"/>
+                    <div className="md:flex">
+                        <div className="hidden md:block">
+                            <img src="images/Apple1.svg" alt="product" className="w-20 h-20 border-2 border-gray-100 lg:p-2 mb-6"/>
+                            <img src="images/Apple2.svg" alt="product" className="w-20 h-20 border-2 border-gray-100 lg:p-2 mb-6"/>
+                            <img src="images/Apple1.svg" alt="product" className="w-20 h-20 border-2 border-gray-100 lg:p-2 mb-6"/>
+                            <img src="images/Apple2.svg" alt="product" className="w-20 h-20 border-2 border-gray-100 lg:p-2 mb-6"/>
                         </div>
-                        <div className="w-[520px] h-[392px] border-2 border-gray-100 ms-5">
-                            <img src="images/Apples.svg" alt="product" className="" />
+                        <div className="border-2 border-gray-100 md:w-[520px] md:h-[392px] flex items-center justify-center">
+                            <img src="images/Apples.svg" alt="product" className="block" />
+                        </div>
+                        <div className="md:hidden flex items-end justify-between">
+                            <img src="images/Apple1.svg" alt="product" className="w-16 h-16 border-2 border-gray-100 lg:p-2 m-1 mb-6"/>
+                            <img src="images/Apple2.svg" alt="product" className="w-16 h-16 border-2 border-gray-100 lg:p-2 m-1 mb-6"/>
+                            <img src="images/Apple1.svg" alt="product" className="w-16 h-16 border-2 border-gray-100 lg:p-2 m-1 mb-6"/>
+                            <img src="images/Apple2.svg" alt="product" className="w-16 h-16 border-2 border-gray-100 lg:p-2 m-1 mb-6"/>
                         </div>
                     </div>
                 </div>
                 <div className="right-content">
                     <div className="main-content">
-                        <h1 className="text-2xl font-normal mb-4">Fresho Apple - Red Delicious, Regular, 4pcs (Approx. 530g - 640g)</h1>
+                        <h1 className="md:text-2xl md:font-normal font-semibold mb-4">Fresho Apple - Red Delicious, Regular, 4pcs (Approx. 530g - 640g)</h1>
                         <h2 className="text-xs font-medium mb-2"><span className="text-base font-bold mr-4">$4,164.94</span>You Save: 20%(Inclusive of all taxes)</h2>
                         <h3 className="font-medium text-sm text-[#5A9C17] mb-2">In Stock</h3>
                         <h4 className="font-medium text-sm mb-2">Inaugural Offer Free Shipping</h4>
@@ -61,11 +67,11 @@ const ProductDetails = () => {
                         </div>
                     </div>
                 </div>
-        </div>
+            </div>
         </div>
         <hr className='container my-10'></hr>
-        <div className='about-product container'>
-            <div className='grid grid-cols-2 gap-36'>
+        <div className='about-product container px-2'>
+            <div className='grid sm:grid-cols-2 lg:gap-36 md:gap-20 gap-10'>
                 <div className='left-content'>
                     <div className='about-the-product mb-6'>
                         <h1 className='font-bold text-xl mb-4'>About the Product</h1>
@@ -102,15 +108,15 @@ const ProductDetails = () => {
         <hr className='container my-10'></hr>
         <div className='products container'>
             {/* <h1 className='text-xl font-bold'>Don't Forget to Add</h1> */}
-            <TopSelling/>
+            {/* <TopSelling/> */}
         </div>
         <hr className='container my-10'></hr>
-        <div className='container flex justify-end'>
-            <button className='border border-[#5A9C17] h-10 w-44 hover:border-black bg-[#5A9C17] text-white hover:bg-white hover:text-black text-sm font-bold rounded'>Write a review</button>
-        </div>
-        <div className='product-rating container'>
-            <h5 className='text-xl font-bold mb-6'>Product Rating</h5>
-            <h6 className='text-6xl font-bold'>4.0/5</h6>
+        <div className='product-rating container px-2'>
+            <div className='container flex justify-between'>
+                <h5 className='md:text-xl text-lg font-bold mb-6'>Product Rating</h5>
+                <button className='border border-[#5A9C17] h-10 md:w-44 w-32 hover:border-black bg-[#5A9C17] text-white hover:bg-white hover:text-black text-sm font-bold rounded'>Write a review</button>
+            </div>
+            <h6 className='md:text-6xl text-4xl font-bold mb-1 flex'>4.0/5</h6>
             <div className='rating flex mb-6'>
                 <AiFillStar className="text-[#FFB905] text-xl mr-2"/>
                 <AiFillStar className="text-[#FFB905] text-xl mr-2"/>
@@ -118,18 +124,23 @@ const ProductDetails = () => {
                 <AiFillStar className="text-[#FFB905] text-xl mr-2"/>
                 <AiFillStar className="text-[#FFB905] text-xl mr-2"/>
             </div>
-            <h5 className='text-xl font-bold'>All Review (4)</h5>
+            <h5 className='text-xl font-bold flex'>All Review (4)</h5>
         </div>
         <hr className='container my-4'></hr>
-        <div className='container review-owner my-10'>
-            <div className='grid grid-cols-2 gap-36'>
+        <div className='container review-owner my-10 px-2'>
+            <div className=''>
                 <div className='left'>
-                    <h6 className='text-[#5A9C17] text-base font-bold mb-2'>Cameron Williamson</h6>
-                    <h6 className='text-sm font-bold mb-2'>Osk, Totem Credence</h6>
-                    <span className='text-sm font-medium mb-2'>Highlay recommand everyone. The matrial is super slight and great for me, but little see througts, so be careful</span>
+                    <div className='flex justify-between items-center'>
+                        <h6 className='text-[#5A9C17] text-base font-bold mb-2'>Cameron Williamson</h6>
+                        <span className='text-sm font-medium text-[#9A9A9A]'>5 Jun,2023</span>
+                    </div>
+                    <div className='max-w-sm'>
+                        <h6 className='text-sm font-bold mb-2'>Osk, Totem Credence</h6>
+                        <span className='text-sm font-medium mb-2'>Highlay recommand everyone. The matrial is super slight and great for me, but little see througts, so be careful</span>
+                    </div>
                 </div>
-                <div className='right flex justify-end'>
-                    <span className='text-sm font-medium text-[#9A9A9A]'>5 Jun,2023</span>
+                <div className='flex justify-end'>
+                    
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
 import { Outlet, useNavigate } from 'react-router-dom'
-import TopBar from '../../components/header/TopBar'
-import Navbar from '../../components/header/Navbar'
-import { useEffect, useState } from 'react'
+import Header from '../../components/header'
+import { Suspense, useEffect, useState } from 'react'
 import Footer from '../../components/footer/Footer'
+import { Loader } from '../../assets/Loader'
 
 const Index = () => {
   const [checkLogin, setCheckLogin] = useState("");
@@ -20,10 +20,13 @@ const Index = () => {
       checkLogin
       ?
       <div>
-      <TopBar/>
-      <Navbar/>
-      <Outlet/>
-      <Footer/>
+      <Header/>
+      <Suspense fallback={<Loader/>}>
+        <div className='absolute sm:top-[136px] top-32 right-0 left-0'>
+        <Outlet/>
+        <Footer/>
+        </div>
+      </Suspense>
     </div>
     :
     navigate("/login")

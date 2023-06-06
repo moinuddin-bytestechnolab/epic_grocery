@@ -1,5 +1,5 @@
-import Breadcrumb from "../offers/Breadcrumb"
 import ProductDetails from "./ProductDetails"
+import Breadcrumb from "../shop/Breadcrumb"
 
 const index = () => {
   return (

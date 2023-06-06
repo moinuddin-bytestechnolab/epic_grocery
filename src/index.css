@@ -8,9 +8,6 @@
   box-sizing: border-box;
 }
 
-/* .active{
-  color: #FBBF24;
-} */
 
 .container {
   width: 100%;
@@ -51,3 +48,6 @@
 }
   
 
+.active{
+  color: rgb(251 191 36);
+}

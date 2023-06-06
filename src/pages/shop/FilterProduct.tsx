@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react'
-import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
@@ -13,6 +13,13 @@ const Categories = [
 ]
 
 const FilterProduct = () => {
+    const [value, setValue] = useState<number>(0);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = parseInt(event.target.value);
+    setValue(newValue);
+  };
+
   return (
     <>
         <div className='shadow-lg border border-gray-150 p-2 my-7 border-t-2 '>
@@ -32,10 +39,10 @@ const FilterProduct = () => {
                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
                 </div>
                 <div>
-                    <h3 className="text-base font-semibold">Categories</h3>
+                    <h3 className="text-base font-semibold mt-7 mb-3">Categories</h3>
                     {Categories.map((item)=>(
                         <div className="flex items-center justify-between">
-                        <label className="ml-3 text-sm text-gray-600 font-medium">{item.categoryName}</label>
+                        <label className="ml-3 my-3 text-sm text-gray-600 font-medium">{item.categoryName}</label>
                         <input
                             name="check"
                             defaultValue="check"
@@ -43,6 +50,24 @@ const FilterProduct = () => {
                             className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
                     </div>
                     ))}
+                </div>
+                <div>
+                    <label htmlFor="default-range" className="block mb-2 text-sm font-medium text-gray-900">
+                    Price
+                    </label>
+                    <input
+                        id="default-range"
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={value}
+                        className="w-full h-3 bg-black rounded-full appearance-none cursor-pointer" 
+                        onChange={handleChange}
+                    />
+                    <div className='flex justify-between'>
+                        <span>0</span>
+                        <span>{value}</span>
+                    </div>
                 </div>
             </div>
             </Disclosure>

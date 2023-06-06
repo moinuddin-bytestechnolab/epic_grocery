@@ -7,25 +7,8 @@ const SearchPage = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // const categories = [
-    //     {offer: true && '10% off' ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-    //     {offer: false ,image:'/public/images/Bhindi.svg' ,productName: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-    //     {offer: true && '20% off' ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-    //     {offer: false ,image:'/public/images/Bhindi.svg' ,productName: 'Bhindi' ,description: `Bhindi / Lady's Finger` ,price:'$0.48'},
-    //     {offer: true && '30% off' ,image:'/public/images/Maggi.svg' ,productName: 'Maggi' ,description: 'Madhur Pure & Hygienic Sulphurless Sugar...' ,price:'$0.48'},
-    // ];
-
-    const handleClick = (index: number) => {
-        if(index < currentIndex){
-          setCurrentIndex(index);
-        }else{
-            console.log("error");
-        }
-      };
-  
-
-  const location = useLocation();
-  const { data, value } = location.state; 
+    const location = useLocation();
+    const { data, value } = location.state; 
       console.log("Value =>",value.search);
       
 
@@ -36,7 +19,10 @@ const SearchPage = () => {
           <p className='text-2xl font-bold'> Search results for “ {value.search} ”</p>
         </div>
         <div className='flex justify-center'>
-          <Card categories={data} currentIndex={currentIndex} handleClick={handleClick}/>
+          <Card categories={data} currentIndex={currentIndex}/>
+        </div>
+        <div className='text-center my-5'>
+          <button className='border h-10 w-32 border-white bg-[#5A9C17] text-slate-100 text-sm font-bold'>Load More</button>
         </div>
       </div>
     </>

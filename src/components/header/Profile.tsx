@@ -30,7 +30,7 @@ const Profile = () => {
     <div>
       <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="flex rounded-full hover:shadow-md hover:shadow-black bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="flex rounded-full hover:shadow-sm hover:shadow-black bg-gray-800 text-sm">
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
@@ -83,7 +83,7 @@ const Profile = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
+                            to="/change-password"
                             className={`block px-4 py-2 text-sm text-gray-700 ${active ? 'bg-gray-800 text-white' : ''}`}
                           >
                             Change Password

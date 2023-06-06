@@ -1,11 +1,25 @@
-import { Outlet } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom'
 
-const index = () => {
+const Index = () => {
+  const [checkLogin, setCheckLogin] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const login:any = localStorage.getItem('user')
+    setCheckLogin(login)
+  }, [])
+
   return (
-    <div>
+    <>
+    {
+      checkLogin ?
+        navigate("/")
+      :
       <Outlet/>
-    </div>
+    }
+    </>
   )
 }
 
-export default index
+export default Index
