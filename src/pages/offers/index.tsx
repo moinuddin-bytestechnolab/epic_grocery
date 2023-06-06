@@ -1,10 +1,15 @@
+import DealsOfWeeks from "../home/DealsOfWeeks"
+import SeasonOffer from "../home/SeasonOffer"
+import SpecialOffer from "../home/SpecialOffer"
 
 
 const index = () => {
     return (
-      <div>
-        index
-      </div>
+        <div>
+          <SeasonOffer/>
+          <DealsOfWeeks/>
+          <SpecialOffer/>
+        </div>
     )
   }
   

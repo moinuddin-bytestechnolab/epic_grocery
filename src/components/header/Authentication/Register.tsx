@@ -33,6 +33,9 @@ const Register = () => {
         phone,
         password
       }
+
+      console.log(userVal);
+      
    
       register(userVal)
       .then((res) => {

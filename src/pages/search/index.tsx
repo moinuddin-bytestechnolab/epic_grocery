@@ -2,9 +2,9 @@ import SearchPage from './SearchPage'
 
 const index = () => {
   return (
-    <div>
-      <SearchPage/>
-    </div>
+      <div>
+        <SearchPage/>
+      </div>
   )
 }
 

@@ -1,33 +1,47 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import { Fragment, useEffect, useState } from 'react'
+import { Dialog, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon, FunnelIcon } from '@heroicons/react/20/solid'
 import Dropdowns from './Dropdowns'
-import TopSelling from '../home/TopSelling'
 import FilterProduct from './FilterProduct'
+import Card from '../home/Card'
+import { allProducts } from '../../services/Auth.service'
+
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
   { name: 'Best Rating', href: '#', current: false },
   { name: 'Newest', href: '#', current: false },
   { name: 'Price: Low to High', href: '#', current: false },
-  { name: 'Price: High to Low', href: '#', current: false },
+  { name: 'Price: High to Low', href: '#', current: false }
 ]
-// const subCategories = [
-//   { name: 'Totes', href: '#' },
-//   { name: 'Backpacks', href: '#' },
-//   { name: 'Travel Bags', href: '#' },
-//   { name: 'Hip Bags', href: '#' },
-//   { name: 'Laptop Sleeves', href: '#' },
-// ]
-
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 const NewProductPage = () => {
+  const [categories, setCategories] = useState([])
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+
+  const getAllProducts = async () => {
+    await allProducts()
+    .then((res)=>{
+      setCategories(res?.data.data)
+    })
+    .catch((error)=>{
+      console.log("Get All Products =>",error);
+      
+    })
+  }
+
+  useEffect(()=>{
+    getAllProducts()
+  },[])
+
+  const getCategoryId = (id : any) => {
+    console.log('get id from drop dowin => ',  id);
+  }
 
   return (
     <div className="bg-white">
@@ -83,11 +97,12 @@ const NewProductPage = () => {
 
         <main className="container">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-5">
-            <h1 className="text-xl font-bold tracking-tight text-gray-900">Fresh Fruit , Vegetable And Leaves</h1>
+            <h1 className="md:text-xl text-sm font-bold tracking-wide text-gray-900 ">Fresh Fruit , Vegetable And Leaves</h1>
 
+          {/* Sort By Selectors */}
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
-                <div>
+                <div className='z-10'>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
                     Sort by
                     <ChevronDownIcon
@@ -130,7 +145,7 @@ const NewProductPage = () => {
               </Menu>
               <button
                 type="button"
-                className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+                className="m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
               >
                 <span className="sr-only">Filters</span>
@@ -140,20 +155,25 @@ const NewProductPage = () => {
           </div>
 
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
-            <h2 id="products-heading" className="sr-only">
-              Products
-            </h2>
-
             <div className="grid grid-cols-5 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
               <form className="hidden lg:block">
-                <Dropdowns/>
+                <Dropdowns categoryId={(id : any) => getCategoryId(id)}/>
                 <FilterProduct/>
                 
               </form>
 
               {/* Product grid */}
-              <div className="lg:col-span-3 col-span-6"><TopSelling/></div>
+              <div className="lg:col-span-3 col-span-6">
+                <div className='flex justify-around items-center'>
+                  <img src="/images/FreshFruitAdd.svg" alt="Fresh Fruit" />
+                </div>
+                <div>
+                  <p>Id = </p>
+                </div>
+                <Card categories={categories} currentIndex={0}/>
+                <div className='text-center mt-4'><button className='border h-10 w-32 border-black bg-[#5A9C17] text-slate-100 border-none text-sm font-bold'>Load more</button></div>
+              </div>
             </div>
           </section>
         </main>

@@ -26,7 +26,10 @@ const Navbar = () => {
         
         const [searchResData, setSearchResData] = useState({})
         const navigate = useNavigate()
-        
+        const handleClick = () => {
+            navigate('/my-carts')
+        }
+
         const formik = useFormik({
             initialValues: {
                 search: ''
@@ -82,7 +85,18 @@ const Navbar = () => {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-12 pt-2">
                 <div className=''>
-                    <div className='flex justify-between'>
+                    <div className=''>
+                        {/* Navbar Link Mobile View */}
+                        <div className="flex justify-around space-x-3 py-1 sm:hidden">
+                            <div className='flex flex-col'>
+                                <NavLink to="/" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">Home</NavLink>
+                                <NavLink to="/new-products" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">New Products</NavLink>
+                                <NavLink to="/shop" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">Shop</NavLink>
+                                <NavLink to="/offers" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">Offers</NavLink>
+                                <NavLink to="/store-location" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">Store Location</NavLink>
+                            </div>
+                        </div>
+                        <hr className='container'></hr>
                         <div>
                             {/* All Categories Mobile View */}
                             <div className="flex justify-around sm:hidden ps-3 mt-3">
@@ -156,12 +170,13 @@ const Navbar = () => {
                                 <div className='space-x-2 lg:flex-row xl:flex-row md:flex'>
                                     <button
                                         type="button"
+                                        onClick={handleClick}
                                         className="text-gray-400 hover:text-white focus:outline-none flex md:py-1 ">
                                         <span className="sr-only">View My Carts With Notification</span>
                                         <span className='px-1 font-bold'>My Cart(0)</span>
                                         <img src="/public/icons/my-cart-icon-white.svg" alt="My Cart Icon"/>
                                     </button>
-                                <div className='mt-3'>
+                                <div className='mt-3 flex justify-center'>
                                     {
                                         isLoggedIn ? 
                                         <Profile/> :
@@ -172,16 +187,7 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        {/* Navbar Link Mobile View */}
-                        <div className="flex justify-around space-x-3 py-1 sm:hidden">
-                            <div className='flex flex-col'>
-                                <NavLink to="/" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">Home</NavLink>
-                                <NavLink to="/new-products" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">New Products</NavLink>
-                                <NavLink to="/shop" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">Shop</NavLink>
-                                <NavLink to="/offers" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">Offers</NavLink>
-                                <NavLink to="/store-location" className="font-medium px-3 py-2 text-white rounded-lg hover:text-amber-400">Store Location</NavLink>
-                            </div>
-                        </div>
+                        
                     </div>
                     
 
@@ -197,17 +203,19 @@ const Navbar = () => {
                     <div>
                         <div className='sm:ml-2 sm:hidden'>
                             <form action="" onSubmit={formik.handleSubmit}>
-                            <label className="block absolute">
-                                <button className="absolute inset-y-0 right-0 flex items-center pr-2 text-2xl"><FiSearch/></button>
-                                <input 
-                                className="placeholder:italic placeholder:text-slate-500 block w-72 border-slate-300 rounded-md py-2 pl-2 pr-8 focus:outline-none sm:text-sm bg-slate-200" 
-                                placeholder="What are you looking for ?" 
-                                type="text" 
-                                name="search"
-                                onChange={formik.handleChange}
-                                value={formik.values.search}
-                                />
-                            </label>
+                                <div className='flex justify-center'>
+                                    <label className="block absolute">
+                                        <button className="absolute inset-y-0 right-0 flex items-center pr-2 text-2xl"><FiSearch/></button>
+                                        <input 
+                                        className="placeholder:italic placeholder:text-slate-500 block w-60 border-slate-300 rounded-md py-2 pl-2 pr-8 focus:outline-none sm:text-sm bg-slate-200" 
+                                        placeholder="What are you looking for ?" 
+                                        type="text" 
+                                        name="search"
+                                        onChange={formik.handleChange}
+                                        value={formik.values.search}
+                                        />
+                                    </label>
+                                </div>
                             </form>
                         </div>
                     </div> 

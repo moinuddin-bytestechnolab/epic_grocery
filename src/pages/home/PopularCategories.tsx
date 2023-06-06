@@ -1,17 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PopularCategoriesCard from './PopularCategoriesCard';
+import { allCategories } from '../../services/Auth.service';
 
 const PopularCategories = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const categories = [
-    { title: 'Fresh Vegetables', image: '/public/icons/Main-logo.svg', active: false },
-    { title: 'Pure Rice', image: '/public/icons/Main-logo.svg', active: false },
-    { title: 'Groceries', image: '/public/icons/Main-logo.svg', active: false },
-    { title: 'Flours, Grains & Atta', image: '/public/icons/Main-logo.svg', active: true },
-    { title: 'Dry Fruits & Nuts', image: '/public/icons/Main-logo.svg', active: false },
-    { title: 'Healthy Snacks', image: '/public/icons/Main-logo.svg', active: false },
-  ];
+  const [categories, setCategories] = useState([])
+    
+  const getCategories = async () => {
+    await allCategories()
+    .then((res : any ) => {
+      const resData = res?.data.data;
+      const filterData = resData.filter((e : any) => {
+        return e.is_active  === true;
+      })
+
+      setCategories(filterData)
+      // console.log('filterData => ', filterData);
+      
+
+    })
+    .catch((error) => {
+      console.log(error); 
+    })
+  }
+
+
+  useEffect(() => {
+    getCategories()
+  },[])
 
   const handlePreviousClick = () => {
     setCurrentIndex((prevIndex: number) =>  (prevIndex > 0 ? prevIndex - 1 : 0))
@@ -21,13 +38,6 @@ const PopularCategories = () => {
     setCurrentIndex((prevIndex: number)=> (prevIndex < categories.length - 1  ? prevIndex + 1 : categories.length - 1))
   }
 
-  const handleClick = (index: number) => {
-    if(index < currentIndex){
-      setCurrentIndex(index);
-    }else{
-      handleNextClick()
-    }
-  };
 
   return (
     <div>
@@ -52,7 +62,7 @@ const PopularCategories = () => {
             </div>
         </div>
         <div className='flex justify-center'>
-          <PopularCategoriesCard categories={categories} handleClick={handleClick} currentIndex={currentIndex}/>
+          <PopularCategoriesCard categories={categories} currentIndex={currentIndex}/>
         </div>
       </div>
     </div>

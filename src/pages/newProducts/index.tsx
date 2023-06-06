@@ -1,12 +1,12 @@
-import Breadcrumb from "./Breadcrumb"
-import NewProductPage from "./NewProductPage"
+import MultipleProducts from "../home/MultipleProducts"
+import PopularCategories from "../home/PopularCategories"
 
 const index = () => {
   return (
-    <div>
-        <Breadcrumb/>
-        <NewProductPage/>
-    </div>
+      <div>
+          <PopularCategories/>
+          <MultipleProducts/>
+      </div>
   )
 }
 

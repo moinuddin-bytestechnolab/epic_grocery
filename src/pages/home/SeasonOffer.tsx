@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import SeassonOfferCard from "./SeassonOfferCard";
 
 const SeasonOffer = () => {
@@ -6,9 +7,11 @@ const SeasonOffer = () => {
         {image: '/public/images/SummerVegetable.svg' ,offer: 'Fresh Farm Products 40% Off' ,title: 'Vegetable Big Sale'}
       ];
   return (
+    <Suspense>
     <div>
         <SeassonOfferCard categories={categories}/>
     </div>
+    </Suspense>
   )
 }
 
