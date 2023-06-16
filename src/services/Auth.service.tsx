@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios"
 import { AuthHeader } from "./Auth-Header"
 import Toaster from "../hooks/Toaster"
 
-const API_URL = "http://192.168.1.11:3000/"
+const API_URL = "http://192.168.10.253:3000/"
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Authentication APIs !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -74,7 +74,7 @@ export const allCategories = async() => {
 
 export const allProducts = async()=> {
     try {
-        const res = await axios.get(`${API_URL}products`);
+        const res = await axios.get(`${API_URL}products`,  { headers : AuthHeader() });
         return res
     } catch (error) {
         console.log(error);
@@ -82,3 +82,40 @@ export const allProducts = async()=> {
     }
 }
 
+export const getProductsByCategoryId = async(id:any)=> {
+    try {
+        const res = await axios.get(`${API_URL}products/findproducts/${id}`, { headers : AuthHeader() });
+        return res
+    } catch (error) {
+        console.log(error);
+                
+    }
+}
+
+
+// Add to cart API
+export const addCartProducts = async (cartProducts : any) => {
+    const res = await axios.post(`${API_URL}carts/create`, cartProducts , { headers : AuthHeader() });
+    console.log("Add to cart=>",res);
+    
+    return res
+}
+
+export const getCartProducts = async () => {
+    const res = await axios.get(`${API_URL}carts`, { headers : AuthHeader() });
+    return res
+}
+
+export const updateAddToCartQty = async (id : any, cartData : any) => {
+    const res = await axios.put(`${API_URL}carts/${id}`, cartData ,{ headers : AuthHeader() })
+    return res
+}
+
+//Remove Cart Product
+
+export const removeCartProduct = async (id: number) => {
+    const res = await axios.delete(`${API_URL}carts/delete/${id}`, { headers : AuthHeader() })
+    return res
+}
+
+//

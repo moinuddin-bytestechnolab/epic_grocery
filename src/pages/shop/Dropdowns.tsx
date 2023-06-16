@@ -32,6 +32,7 @@ const Dropdowns = ({categoryId} : any) => {
       
       const handleCategoryClickedId =(id:any) => {
         categoryId(id)
+        
       }
 
   return (

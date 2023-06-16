@@ -7,7 +7,7 @@ const TopBar = () => {
   return (
     <div className='bg-white'>
       <div className="container"> 
-        <div className='grid lg:grid-cols-4 md:grid-cols-3 py-5'>
+        <div className='grid lg:grid-cols-4 md:grid-cols-3 py-5 pb-5'>
           {/* Main Logo With Name */}
           <a href="/"><MainLogo/></a>
 

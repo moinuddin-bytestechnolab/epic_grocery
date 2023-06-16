@@ -1,9 +1,9 @@
-import MyCarts from './MyCarts'
+import MyCartsPage from './MyCartsPage'
 
 const index = () => {
   return (
       <div>
-      <MyCarts/>
+      <MyCartsPage/>
       </div>
   )
 }
