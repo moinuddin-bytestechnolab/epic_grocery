@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom'
+import { Loader } from '../../assets/Loader';
 
 const Index = () => {
   const [checkLogin, setCheckLogin] = useState("");
@@ -11,14 +12,16 @@ const Index = () => {
   }, [])
 
   return (
+      <Suspense fallback={<Loader/>}>
     <>
     {
       checkLogin ?
         navigate("/")
       :
-      <Outlet/>
-    }
+        <Outlet/>
+      }
     </>
+      </Suspense>
   )
 }
 

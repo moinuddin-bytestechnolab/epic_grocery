@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { AiOutlineHeart } from 'react-icons/ai'
 import { AiFillHeart } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
+import { addCartProducts } from '../../services/Auth.service';
+import Toaster from '../../hooks/Toaster';
 
 interface ICategory {
+    id: number;
     offer: any;
     image_url: string;
     name: string;
@@ -30,6 +33,14 @@ const Card = (props:ICardProps) => {
             }
         }
 
+    const handleAddToCart = async (productId : any) => {
+        const productQty = 1;
+        const cartData = {
+            "product_id" :productId,
+            "qty" : productQty
+        }
+        const res = await addCartProducts(cartData)
+    }
 
   return (
     <div>
@@ -70,7 +81,7 @@ const Card = (props:ICardProps) => {
                         <span className="text-sm font-medium w-[162px] h-10">{item.description}</span>
                         <span className="text-sm font-medium">₹{item.price}</span>
                     </div>
-                    <div className='mt-4'><button className='border h-10 w-full border-black hover:bg-[#5A9C17] hover:text-slate-100 hover:border-none text-sm font-bold'>Add to cart</button></div>
+                    <div className='mt-4'><button onClick={() => handleAddToCart(item.id)} className='border h-10 w-full border-black hover:bg-[#5A9C17] hover:text-slate-100 hover:border-none text-sm font-bold'>Add to cart</button></div>
                 </div>
                 ))
                 :

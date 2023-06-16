@@ -5,7 +5,7 @@ import { ChevronDownIcon, FunnelIcon } from '@heroicons/react/20/solid'
 import Dropdowns from './Dropdowns'
 import FilterProduct from './FilterProduct'
 import Card from '../home/Card'
-import { allProducts } from '../../services/Auth.service'
+import { allProducts, getProductsByCategoryId } from '../../services/Auth.service'
 
 
 const sortOptions = [
@@ -21,27 +21,40 @@ function classNames(...classes: string[]) {
 }
 
 const NewProductPage = () => {
-  const [categories, setCategories] = useState([])
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-
-  const getAllProducts = async () => {
-    await allProducts()
-    .then((res)=>{
-      setCategories(res?.data.data)
-    })
-    .catch((error)=>{
-      console.log("Get All Products =>",error);
-      
-    })
-  }
-
-  useEffect(()=>{
-    getAllProducts()
-  },[])
+  const [categories, setCategories] = useState([])
+  const [categoryId, setCategoryId] = useState(0)
+  
 
   const getCategoryId = (id : any) => {
-    console.log('get id from drop dowin => ',  id);
+    setCategoryId(id)
   }
+  
+  const getAllProducts = async () => {
+    if(categoryId){
+      await getProductsByCategoryId(categoryId)
+      .then((res)=>{
+        setCategories(res?.data.data)
+      })
+      .catch((error)=>{
+        console.log("Get All Products =>",error);
+      })
+    }else{
+      await allProducts()
+      .then((res)=>{
+        console.log('category id res => ',  res);
+        
+        setCategories(res?.data.data)
+      })
+      .catch((error)=>{
+        console.log("Get All Products =>",error);
+      })
+    }
+  }
+  
+  useEffect(()=>{
+    getAllProducts()
+  },[categoryId])
 
   return (
     <div className="bg-white">
@@ -168,11 +181,10 @@ const NewProductPage = () => {
                 <div className='flex justify-around items-center'>
                   <img src="/images/FreshFruitAdd.svg" alt="Fresh Fruit" />
                 </div>
-                <div>
-                  <p>Id = </p>
-                </div>
+                <div className='my-5'>
                 <Card categories={categories} currentIndex={0}/>
-                <div className='text-center mt-4'><button className='border h-10 w-32 border-black bg-[#5A9C17] text-slate-100 border-none text-sm font-bold'>Load more</button></div>
+                </div>
+                {/* <div className='text-center mt-4'><button className='border h-10 w-32 border-black bg-[#5A9C17] text-slate-100 border-none text-sm font-bold'>Load more</button></div> */}
               </div>
             </div>
           </section>

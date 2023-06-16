@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const Index = ({mainHeading , subHeading} : any) => {
-    console.log(mainHeading, subHeading);
     
 
     const [currentIndex, setCurrentIndex] = useState(0);

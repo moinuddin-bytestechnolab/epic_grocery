@@ -7,9 +7,15 @@ const Profile = () => {
   const navigate = useNavigate()
     const checkLoginUser = () => {
       const login : any = localStorage.getItem('user')
-      setIsLoggedIn(login);
+      const userDetails = login ? JSON.parse(login) : null
+      setIsLoggedIn(userDetails);
     }
-
+    const {data}:any = isLoggedIn;
+    const FirstName = data?.first_name
+    const LastName = data?.last_name
+    const initials = FirstName?.charAt(0) + LastName?.charAt(0) || ""
+    
+    
     const handleLogout = () => {
       localStorage.removeItem('user');
       setIsLoggedIn(false);
@@ -32,11 +38,9 @@ const Profile = () => {
                   <div>
                     <Menu.Button className="flex rounded-full hover:shadow-sm hover:shadow-black bg-gray-800 text-sm">
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      <div className="h-8 w-8 rounded-full flex items-center justify-center uppercase bg-gray-800 text-white">
+                        {initials}
+                      </div>
                     </Menu.Button>
                   </div>
                   <Transition
@@ -49,6 +53,12 @@ const Profile = () => {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute -left-10 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        <p className='capitalize px-4 text-md font-semibold text-gray-600'>{data?.first_name} {data?.last_name}</p>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <p className='px-4 pb-2 text-sm font-semibold text-gray-500 border-b shadow-sm'>{data?.email}</p>
+                      </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
                           <Link
@@ -63,10 +73,11 @@ const Profile = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
+                            to="/manage-addresses"
                             className={`block px-4 py-2 text-sm text-gray-700 ${active ? 'bg-gray-800 text-white' : ''}`}
+                            onClick={handleEdit}
                           >
-                            Your Wish List
+                            Manage Addresses
                           </Link>
                         )}
                       </Menu.Item>
@@ -76,7 +87,7 @@ const Profile = () => {
                             to="#"
                             className={`block px-4 py-2 text-sm text-gray-700 ${active ? 'bg-gray-800 text-white' : ''}`}
                           >
-                            Settings
+                            Your Wish List
                           </Link>
                         )}
                       </Menu.Item>

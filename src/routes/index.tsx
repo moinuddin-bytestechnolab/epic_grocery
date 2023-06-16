@@ -16,9 +16,14 @@ const Public = React.lazy(() => import("../routes/public/index"))
 const Search = React.lazy(() => import("../pages/search"))
 const Error = React.lazy(() => import("../pages/error"))
 const ProductDetails = React.lazy(() => import("../pages/productDetails"))
-const MyCarts = React.lazy(() => import("../pages/myCart/MyCarts"))
+const MyCarts = React.lazy(() => import("../pages/myCart/MyCartsPage"))
+// const MyCarts = React.lazy(() => import("../pages/myCart/MyCarts"))
+const CheckOut = React.lazy(()=> import("../pages/checkOut"))
+const Payment = React.lazy(()=> import("../pages/checkOut/Payment"))
+const Addresses = React.lazy(()=> import("../components/header/ManageAddress"))
 
 const index = () => { 
+
     return (
       <div>
         {/* <Suspense fallback={<Loader/>}> */}
@@ -28,11 +33,14 @@ const index = () => {
               <Route path="/search/:product?" element={<Search/>}/>
               <Route path="/new-products" element={<NewProducts/>}/>
               <Route path="/offers" element={<Offers/>}/>
-              <Route path="/shop" element={<Shop/>}/>
+              <Route path="/shop/:id?" element={<Shop/>}/>
               <Route path="/store-location" element={<StoreLocation/>}/>
               <Route path="/product-details" element={<ProductDetails/>}/>
               <Route path="/my-carts" element={<MyCarts/>}/>
               <Route path="/change-password" element={<ChangePassword/>}/>
+              <Route path="/checkout" element={<CheckOut/>}/>
+              <Route path="/payment" element={<Payment/>}/>
+              <Route path="/manage-addresses" element={<Addresses/>}/>
             </Route>
             <Route path="/" element={<Public/>}>
               <Route path="/login" element={<Login/>}/>
